@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katherine Claire Peñaflor — Creative Portfolio 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #b52c22;
+    --red-light: #d63428;
+    --red-dim: #8a1f17;
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #161616;
+    --bg4: #1c1c1c;
+    --border: #232323;
+    --border2: #2e2e2e;
+    --text: #f0ece6;
+    --text2: #9a948e;
+    --text3: #5a5550;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  section { scroll-margin-top: 80px; }
+  #contact { scroll-margin-top: 80px; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--red-dim); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--red); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-hire {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--red);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-hire:hover { background: var(--red-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(181,44,34,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+  .hero-eyebrow-line { width: 32px; height: 0.5px; background: var(--red); }
+  .hero-eyebrow-text {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 600;
+    line-height: 1.05;
+    margin-bottom: 0.3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-name-last {
+    font-family: var(--serif);
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--red);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+    display: block;
+  }
+
+  .hero-role {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--text2);
+    text-transform: uppercase;
+    margin: 1.5rem 0;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-bio {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.8;
+    max-width: 440px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .btn-red {
+    background: var(--red);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-red:hover { background: var(--red-light); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 2px;
+    border: 0.5px solid var(--border2);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--text3); color: var(--text); }
+
+  /* HERO RIGHT — STATS */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .stat-block {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem 1.8rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    transition: border-color 0.3s;
+  }
+  .stat-block:hover { border-color: var(--red-dim); }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--red);
+    line-height: 1;
+    min-width: 90px;
+  }
+
+  .stat-info {}
+  .stat-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .stat-sub { font-size: 12px; color: var(--text3); }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .tag {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    color: var(--text2);
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  /* SECTION */
+  section {
+    padding: 5rem 3rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .section-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--bg2);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--bg3); }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    border: 0.5px solid var(--red-dim);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .service-icon svg { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 1.5; }
+
+  .service-name {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .service-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+
+  /* WORK EXPERIENCE */
+  .work-list { display: flex; flex-direction: column; gap: 0; }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid var(--border);
+    transition: background 0.2s;
+  }
+  .work-item:last-child { border-bottom: none; }
+
+  .work-meta {}
+  .work-role {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  .work-company {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .work-period { font-size: 12px; color: var(--text3); }
+
+  .work-body {}
+  .work-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  .work-bullets { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .work-bullets li {
+    font-size: 13px;
+    color: var(--text2);
+    padding-left: 16px;
+    position: relative;
+  }
+  .work-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--red-dim);
+    font-size: 11px;
+  }
+
+  /* METRICS */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 3rem;
+  }
+  .metric-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+  .metric-card:hover { border-color: var(--red-dim); }
+  .metric-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-label { font-size: 12px; color: var(--text3); letter-spacing: 0.04em; }
+
+  /* TOOLS */
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tool-pill {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    background: var(--bg3);
+    border: 0.5px solid var(--border2);
+    color: var(--text2);
+    padding: 7px 16px;
+    border-radius: 20px;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: default;
+  }
+  .tool-pill:hover { border-color: var(--red-dim); color: var(--text); }
+
+  /* PROJECT HIGHLIGHTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .project-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: border-color 0.3s;
+  }
+  .project-card:hover { border-color: var(--red-dim); }
+  .project-card.featured {
+    border-color: var(--red-dim);
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .project-tag {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+  .project-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .project-desc { font-size: 13px; color: var(--text2); line-height: 1.7; }
+
+  .project-metrics { display: flex; gap: 1.5rem; margin-top: 1.2rem; }
+  .pm { text-align: center; }
+  .pm-num {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--red);
+    display: block;
+  }
+  .pm-label { font-size: 11px; color: var(--text3); }
+
+  .featured-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .fm-item {
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .fm-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--red);
+    min-width: 80px;
+  }
+  .fm-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+  /* CTA */
+  .cta-section {
+    padding: 6rem 3rem;
+    border-top: 0.5px solid var(--border);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(181,44,34,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+  }
+  .cta-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .cta-title em { font-style: italic; color: var(--red); }
+  .cta-sub {
+    font-size: 15px;
+    color: var(--text2);
+    margin-bottom: 2.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-item:hover { color: var(--text); }
+  .contact-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy { font-size: 12px; color: var(--text3); }
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--text2);
+  }
+  .footer-name span { color: var(--red); }
+
+  /* DECORATIVE */
+  .red-line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--red);
+    margin: 0 auto 1.5rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
+    section { padding: 3rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .work-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .cta-section { padding: 4rem 1.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">K<span>.</span>Peñaflor</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Experience</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:katherinepenaflor32@gmail.com" class="nav-hire">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      <span class="hero-eyebrow-text">Available for work · 2026</span>
+    </div>
+    <h1 class="hero-name">
+      Katherine Claire
+      <em class="hero-name-last">Peñaflor</em>
+    </h1>
+    <p class="hero-role">Graphic Designer &nbsp;·&nbsp; Virtual Assistant &nbsp;·&nbsp; Social Media Manager</p>
+    <p class="hero-bio">
+      A creative strategist and brand builder who blends technical precision with a refined visual eye. Specializing in cohesive brand identities, social media growth, and seamless virtual operations.
+    </p>
+    <div class="hero-tags" style="margin-bottom: 2rem;">
+      <span class="tag">Brand Identity</span>
+      <span class="tag">Social Media</span>
+      <span class="tag">Content Creation</span>
+      <span class="tag">Data Entry</span>
+      <span class="tag">Email Management</span>
+      <span class="tag">UI/UX</span>
+    </div>
+    <div class="hero-btns">
+      <a href="mailto:katherinepenaflor32@gmail.com" class="btn-red">Work with me</a>
+      <a href="#work" class="btn-outline">View experience</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-block">
+      <div class="stat-num">34+</div>
+      <div class="stat-info">
+        <div class="stat-title">Brand identities created</div>
+        <div class="stat-sub">Logos & visual systems for diverse clients</div>
+      </div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">57</div>
+      <div class="stat-info">
+        <div class="stat-title">Custom templates built</div>
+        <div class="stat-sub">Canva & Figma — saved clients 45% design time</div>
+      </div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">54.1K</div>
+      <div class="stat-info">
+        <div class="stat-title">Peak organic video views</div>
+        <div class="stat-sub">Zero ad spend — pure content strategy</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">What I <em>offer</em></h2>
+  </div>
+
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="service-name">Graphic Design</div>
+      <div class="service-desc">Logos, brand kits, social graphics, posters, and Canva/Figma templates — designed with intention and built to last.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+      </div>
+      <div class="service-name">Social Media Management</div>
+      <div class="service-desc">Content calendars, platform strategy, Reels/TikTok editing, community engagement, and organic growth on Instagram & TikTok.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="service-name">Virtual Assistant</div>
+      <div class="service-desc">Email management, inbox organization, scheduling, CRM data entry, and administrative operations handled with precision.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="service-name">Content Creation</div>
+      <div class="service-desc">Short-form video editing and aesthetic visual assets tailored to current lifestyle and product marketing trends that drive views.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="service-name">Marketing Strategy</div>
+      <div class="service-desc">Data-backed content planning, brand messaging, campaign execution, and promotional material production across channels.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div class="service-name">UI/UX Design</div>
+      <div class="service-desc">User-centered mobile app prototypes and wireframes in Figma, applying UX principles for intuitive, research-driven digital experiences.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK EXPERIENCE -->
+<section id="work" style="scroll-margin-top: 80px;">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Work <em>experience</em></h2>
+  </div>
+
+  <div class="work-list">
+    <div class="work-item reveal">
+      <div class="work-meta">
+        <div class="work-role">Social Media & VA</div>
+        <div class="work-company">CashbackOnRent & Travel Arrow</div>
+        <div class="work-period">2025 – 2026</div>
+      </div>
+      <div class="work-body">
+        <p class="work-desc">Full-scale social media operations and virtual assistant support for multiple clients across the travel and real estate sectors.</p>
+        <ul class="work-bullets">
+          <li>Managed content calendar scheduling via Meta Business Suite across platforms</li>
+          <li>Handled audience inquiries and proactive community engagement strategies</li>
+          <li>Designed brand assets and short-form video content for organic growth</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-meta">
+        <div class="work-role">Freelance</div>
+        <div class="work-company">Graphic Designer</div>
+        <div class="work-period">2023 – Present</div>
+      </div>
+      <div class="work-body">
+        <p class="work-desc">Independent brand design work serving clients across lifestyle, beauty, and service industries.</p>
+        <ul class="work-bullets">
+          <li>Created logos and cohesive brand identities for 34 clients matching their specific vision</li>
+          <li>Built 57 reusable Canva and Figma templates, reducing client design time by 45%</li>
+          <li>Delivered end-to-end brand packages from concept to final file delivery</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-meta">
+        <div class="work-role">Marketing Intern</div>
+        <div class="work-company">Pandr</div>
+        <div class="work-period">2024</div>
+      </div>
+      <div class="work-body">
+        <p class="work-desc">Supported the marketing team with visual content production and internal communications design.</p>
+        <ul class="work-bullets">
+          <li>Produced digital posters and event trailers with clear messaging for target audiences</li>
+          <li>Designed professional presentations for stakeholder meetings and internal reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-meta">
+        <div class="work-role">Library Assistant</div>
+        <div class="work-company">Bicol University Polangui</div>
+        <div class="work-period">2023 – 2024</div>
+      </div>
+      <div class="work-body">
+        <p class="work-desc">Administrative and documentation support within an academic institution.</p>
+        <ul class="work-bullets">
+          <li>Prepared professional presentations for the institutional accreditation process</li>
+          <li>Organized documentation and managed paperwork to improve facility accessibility</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-meta">
+        <div class="work-role">Thesis Project</div>
+        <div class="work-company">SiliLens · UI/UX Designer</div>
+        <div class="work-period">2023 – 2024</div>
+      </div>
+      <div class="work-body">
+        <p class="work-desc">Led the UX design of a research-driven mobile application for real-time data interaction.</p>
+        <ul class="work-bullets">
+          <li>Architected an interactive prototype in Figma using user-centered design principles</li>
+          <li>Analyzed and improved UI/UX components based on target demographic behaviors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Proven <em>results</em></h2>
+  </div>
+
+  <div class="metrics-row reveal">
+    <div class="metric-card">
+      <div class="metric-num">54.1K</div>
+      <div class="metric-label">Peak organic video views</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">13.7K</div>
+      <div class="metric-label">Sustained content views</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">45%</div>
+      <div class="metric-label">Design time saved for clients</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num">3,056</div>
+      <div class="metric-label">Likes on brand content</div>
+    </div>
+  </div>
+
+  <div class="projects-grid reveal">
+    <div class="project-card featured">
+      <div>
+        <div class="project-tag">Beauty & Lifestyle Brand</div>
+        <div class="project-name">TheklawzClub</div>
+        <div class="project-desc">
+          Developed a cohesive visual identity and handled full-scale platform management for a modern nail and beauty brand. Designed brand assets from the ground up, curated content layouts, and implemented organic growth strategies across Instagram and TikTok.
+        </div>
+        <div class="project-metrics">
+          <div class="pm">
+            <span class="pm-num">661</span>
+            <span class="pm-label">Post likes</span>
+          </div>
+          <div class="pm">
+            <span class="pm-num">633</span>
+            <span class="pm-label">Reactions</span>
+          </div>
+          <div class="pm">
+            <span class="pm-num">3,056</span>
+            <span class="pm-label">Video likes</span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-metrics">
+        <div class="fm-item">
+          <div class="fm-num">54.1K</div>
+          <div class="fm-text">Viral milestone — single short-form video with zero ad spend</div>
+        </div>
+        <div class="fm-item">
+          <div class="fm-num">13.7K</div>
+          <div class="fm-text">Organic views on supporting content, proving consistent reach</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Brand Design</div>
+      <div class="project-name">Freelance Branding</div>
+      <div class="project-desc">Created unique logos and visual identities for 34 clients across diverse industries. Built a collection of 57 custom reusable templates in Canva and Figma.</div>
+      <div class="project-metrics">
+        <div class="pm">
+          <span class="pm-num">34</span>
+          <span class="pm-label">Clients served</span>
+        </div>
+        <div class="pm">
+          <span class="pm-num">57</span>
+          <span class="pm-label">Templates built</span>
+        </div>
+        <div class="pm">
+          <span class="pm-num">45%</span>
+          <span class="pm-label">Time saved</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">UI/UX · Thesis</div>
+      <div class="project-name">SiliLens App</div>
+      <div class="project-desc">Architected an interactive mobile application prototype using user-centered design principles. Analyzed and refined UI/UX components based on real user demographic data and behaviors.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section>
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Tools &amp; <em>stack</em></h2>
+  </div>
+  <div class="tools-grid reveal">
+    <span class="tool-pill">Canva</span>
+    <span class="tool-pill">Figma</span>
+    <span class="tool-pill">CapCut</span>
+    <span class="tool-pill">Meta Business Suite</span>
+    <span class="tool-pill">Google Sheets</span>
+    <span class="tool-pill">Google Docs</span>
+    <span class="tool-pill">Notion</span>
+    <span class="tool-pill">Slack</span>
+    <span class="tool-pill">Trello</span>
+    <span class="tool-pill">ChatGPT</span>
+    <span class="tool-pill">ClickUp</span>
+    <span class="tool-pill">Webflow</span>
+    <span class="tool-pill">WordPress</span>
+    <span class="tool-pill">Gmail</span>
+    <span class="tool-pill">Zoom</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <span class="red-line"></span>
+  <p class="cta-label">Let's build something</p>
+  <h2 class="cta-title reveal">Open to <em>opportunities</em></h2>
+  <p class="cta-sub">Available for part-time and full-time roles. Let's create something great together.</p>
+
+  <div class="contact-grid reveal">
+    <a href="mailto:katherinepenaflor32@gmail.com" class="contact-item">
+      <span class="contact-dot"></span>
+      katherinepenaflor32@gmail.com
+    </a>
+    <a href="tel:+639559753970" class="contact-item">
+      <span class="contact-dot"></span>
+      +63 955 975 3970
+    </a>
+    <span class="contact-item">
+      <span class="contact-dot"></span>
+      Bicol Region, Philippines
+    </span>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 12px;" class="reveal">
+    <a href="mailto:katherinepenaflor32@gmail.com" class="btn-red">Send an email</a>
+    <a href="tel:+639559753970" class="btn-outline">Call me</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 Katherine Claire Peñaflor. All rights reserved.</span>
+  <span class="footer-name">K<span>.</span>Peñaflor — Creative Portfolio</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const navHeight = document.querySelector('nav').offsetHeight;
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
